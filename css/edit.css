@@ -1,0 +1,30 @@
+/* Reset CSS untuk menghilangkan margin dan padding bawaan browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.container h2 {
+    color: #6420AA;
+}
+
+
+.dashboard-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}

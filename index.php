@@ -1,3 +1,35 @@
+<?php
+include 'config.php';
+
+// Membuat koneksi
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Query untuk mendapatkan jumlah tipe barang
+$sql_types = "SELECT COUNT(DISTINCT nama) AS jumlah_tipe FROM produk";
+$result_types = $conn->query($sql_types);
+$row_types = $result_types->fetch_assoc();
+$jumlah_tipe = $row_types['jumlah_tipe'];
+
+// Query untuk mendapatkan total stok barang
+$sql_stock = "SELECT SUM(stok) AS total_stok FROM produk";
+$result_stock = $conn->query($sql_stock);
+$row_stock = $result_stock->fetch_assoc();
+$total_stok = $row_stock['total_stok'];
+
+// Query untuk mendapatkan total barang terjual (asumsi ada tabel penjualan)
+// $sql_sold = "SELECT SUM(quantity) AS total_terjual FROM sales";
+// $result_sold = $conn->query($sql_sold);
+// $row_sold = $result_sold->fetch_assoc();
+// $total_terjual = $row_sold['total_terjual'];
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,49 +41,32 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <h1 class= brand>Kea's Skincare</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="products.php">Produk</a></li>
-                    <li><a href="#">Penjualan</a></li>
-                    <li><a href="#">Laporan</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include 'template/header.php'; ?>
 
     <main class="container">
         <h2>Dashboard</h2>
         <div class="dashboard-info">
             <div class="info-box">
-                <h3><a href="products.html">Jumlah Tipe Barang</a></h3>
+                <h3><a href="produk.php">Jumlah Tipe Barang</a></h3>
                 <div class="info-content">
-                    <p>10</p> <!-- Contoh angka, dapat diganti dengan data aktual -->
+                    <p><?php echo $jumlah_tipe; ?></p>
                 </div>
             </div>
             <div class="info-box">
-                <h3><a href="products.html">Stok Barang</a></h3>
+                <h3><a href="produk.php">Stok Barang</a></h3>
                 <div class="info-content">
-                    <p>500</p> <!-- Contoh angka, dapat diganti dengan data aktual -->
+                    <p><?php echo $total_stok; ?></p>
                 </div>
             </div>
             <div class="info-box">
                 <h3>Barang Terjual</h3>
                 <div class="info-content">
-                    <p>200</p> <!-- Contoh angka, dapat diganti dengan data aktual -->
+                    <!-- <p><?php echo $total_terjual; ?></p> -->
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Kea's Skincare</p>
-        </div>
-    </footer>
+    <?php include 'template/footer.php'; ?>
 </body>
-
 </html>
