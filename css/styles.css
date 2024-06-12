@@ -8,7 +8,8 @@
 body {
     font-family: montserrat, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background: url('../file/bg.jpeg') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -26,12 +27,17 @@ main {
 }
 
 .container h2{
-    color: #6420AA;
     margin-top: 80px;
+    background-image: linear-gradient(to right, #6420AA, rgb(255, 0, 0), indigo, violet);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 header {
-    background-color:#ffc8e4;
+    background-color: #f4f4f4c5;
+    backdrop-filter: blur(5px);
     position: fixed;
     padding: 10px 0;
     height: 80px;
@@ -41,7 +47,11 @@ header {
 
 .brand {
     float: left;
-    color: #ff2994;
+    background-image: linear-gradient(to left, #ff2994, indigo,  #6420AA);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     font-family: Gilroy;
     font-size: 25px;
 }
@@ -57,7 +67,11 @@ nav ul li {
 }
 
 nav ul li a {
-    color:#ff2994;
+    background-image: linear-gradient(to right, #6420AA, indigo, #ff2994);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     text-decoration: none;
 }
 
@@ -70,7 +84,7 @@ nav ul li a {
 }
 
 .info-content {
-    background-color: #f4f4f4;
+    background-color: linear-gradient(to right, #FFFFFF 0%, #F7F7F7 50%, #E5E5E5 100%);
     /* padding: 20px; */
     border-radius: 10px;
 }
@@ -96,7 +110,11 @@ nav ul li a {
 .info-box p {
     font-size: 40px;
     font-weight: bold;
-    color: #6420AA;
+    background-image: linear-gradient(to left, #6420AA, indigo, rgb(255, 0, 0), violet);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
     background-color: #ffc8e4;
     border-radius: 10px;
     padding: 25px;
@@ -111,37 +129,20 @@ nav ul li a {
     text-decoration: underline;
 }
 
-/* CSS tambahan untuk memastikan konten tabel rata tengah */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
-th {
+table th, table td {
     padding: 10px;
-    text-align: center; /* Nama kolom rata tengah */
-}
-
-td {
-    padding: 10px;
-    text-align: center; /* Konten tabel rata tengah */
-    vertical-align: middle;
-}
-
-.action-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.insert-btn a {
-    text-decoration: none;
-    color: inherit;
+    border-bottom: 1px solid #ccc;
 }
 
 footer {
     font-size: 13px;
-    color: #FF69B4;
+    color: #f4f4f4;
     text-align: center;
     padding: 10px 0;
     margin-top: auto;
