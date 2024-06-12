@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2024 at 05:26 PM
+-- Generation Time: Jun 12, 2024 at 07:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -51,7 +51,8 @@ INSERT INTO `produk` (`id`, `nama`, `kategori`, `harga_beli`, `harga_jual`, `sto
 (8, 'Lip Balm', 'Lip Care', 10, 15, 250),
 (9, 'Clay Mask', 'Mask', 35, 50, 130),
 (10, 'Exfoliating Scrub', 'Scrub', 28, 40, 140),
-(14, 'Nature Daily Hydramild Toner Essence', 'toner', 60, 90, 10);
+(14, 'Nature Daily Hydramild Toner Essence', 'toner', 60, 90, 10),
+(17, 'Emina Bright Stuff ', 'Sabun Muka', 20, 30, 10);
 
 -- --------------------------------------------------------
 
@@ -97,7 +98,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`

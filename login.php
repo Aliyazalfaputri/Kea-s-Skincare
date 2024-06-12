@@ -1,3 +1,20 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Ambil nilai username dan password dari form
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if ($username === 'adminkea' && $password === '123') {
+        // Redirect ke halaman admin jika login berhasil
+        header("Location: index.php");
+        exit;
+    } else {
+        // Jika login gagal, tampilkan pesan kesalahan
+        $error = "Username atau password salah. Silakan coba lagi.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +27,8 @@
     <div class="login-container">
         <div class="login-box">
             <h2>Login Admin Kea's Skincare</h2>
-            <form method="post" action="login_process.php">
+            <?php if(isset($error)) { echo "<p>$error</p>"; } ?>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
