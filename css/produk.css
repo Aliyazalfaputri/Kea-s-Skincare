@@ -26,7 +26,7 @@ main {
 }
 
 .container h2 {
-    color: #6420AA;
+    color: pink;
 }
 
 
@@ -42,7 +42,6 @@ table th, table td {
 }
 
 .insert-btn {
-    background-image: linear-gradient(130deg, #6420AA,#419fa7);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -52,11 +51,15 @@ table th, table td {
     text-decoration: none;
 }
 
-.insert-btn a{
+.insert-btn a {
+    background-color: pink; 
     color: #fff;
     text-decoration: none;
+    display: block;
+    padding: 10px 20px; 
+    border-radius: 5px;
 }
 
-.insert-btn:hover {
-    background-color:#d1548f;
+.insert-btn a:hover {
+    background-color: #d1548f; 
 }

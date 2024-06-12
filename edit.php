@@ -1,58 +1,88 @@
 <?php
-session_start();
+include 'config.php'; // Menghubungkan ke file config.php
 
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit;
+// Inisialisasi variabel
+$nama = $kategori = $harga_beli = $harga_jual = $stok = "";
+
+// Memeriksa apakah ada ID di URL untuk pembaruan
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // Query untuk mendapatkan data produk berdasarkan ID
+    $sql = "SELECT * FROM produk WHERE id = $id";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Mengisi variabel dengan data produk
+        $row = $result->fetch_assoc();
+        $nama = $row['nama'];
+        $kategori = $row['kategori'];
+        $harga_beli = $row['harga_beli'];
+        $harga_jual = $row['harga_jual'];
+        $stok = $row['stok'];
+    } else {
+        echo "Produk tidak ditemukan.";
+    }
 }
 
-include 'config.php';
-
-$id = $_GET['id'];
-$sql = "SELECT * FROM produk WHERE id=$id";
-$result = $conn->query($sql);
-$product = $result->fetch_assoc();
-
+// Memeriksa apakah formulir telah disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mengambil nilai dari formulir
     $nama = $_POST['nama'];
     $kategori = $_POST['kategori'];
     $harga_beli = $_POST['harga_beli'];
     $harga_jual = $_POST['harga_jual'];
     $stok = $_POST['stok'];
 
+    // Menyimpan data ke database menggunakan koneksi dari config.php
     $sql = "UPDATE produk SET nama='$nama', kategori='$kategori', harga_beli='$harga_beli', harga_jual='$harga_jual', stok='$stok' WHERE id=$id";
-
+    
     if ($conn->query($sql) === TRUE) {
-        echo "Produk berhasil diupdate";
+        // Mengarahkan ke produk.php setelah data berhasil diperbarui
+        header("Location: produk.php");
+        exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+
+    // Menutup koneksi database
+    $conn->close();
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Produk</title>
-</head>
-
 <?php include 'template/header.php'; ?>
 
-<body>
-    <main class="container">
-    <h2>Edit Produk</h2>
-    <form method="post" action="">
-        Nama: <input type="text" name="nama" value="<?php echo $product['nama']; ?>"><br>
-        Kategori: <input type="text" name="kategori" value="<?php echo $product['kategori']; ?>"><br>
-        Harga Beli: <input type="text" name="harga_beli" value="<?php echo $product['harga_beli']; ?>"><br>
-        Harga Jual: <input type="text" name="harga_jual" value="<?php echo $product['harga_jual']; ?>"><br>
-        Stok: <input type="text" name="stok" value="<?php echo $product['stok']; ?>"><br>
-        <input type="submit" value="Update" class="update-button">
-    </form>
-    </main>
+<link rel="stylesheet" href="css/tambah.css">
 
-    <?php include 'template/footer.php'; ?>
-</body>
-</html>
+<main class="container">
+
+<h2 style="text-align: center; margin-bottom: 20px; color: #ff2994;">Update Produk Skincare</h2>
+
+<form class="add-product-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>">
+    <div class="form-group">
+        <label for="nama">Nama Skincare:</label>
+        <input type="text" name="nama" id="nama" value="<?php echo $nama; ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="kategori">Kategori:</label>
+        <input type="text" name="kategori" id="kategori" value="<?php echo $kategori; ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="harga_beli">Harga Beli:</label>
+        <input type="text" name="harga_beli" id="harga_beli" value="<?php echo $harga_beli; ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="harga_jual">Harga Jual:</label>
+        <input type="text" name="harga_jual" id="harga_jual" value="<?php echo $harga_jual; ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="stok">Stok:</label>
+        <input type="text" name="stok" id="stok" value="<?php echo $stok; ?>" required>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update">
+    </div>
+</form>
+</main>
+
+<?php include 'template/footer.php'; ?>

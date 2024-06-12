@@ -1,13 +1,15 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit;
-}
-
 include 'config.php';
 
+// Membuat koneksi
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Query untuk mendapatkan data produk
 $sql = "SELECT id, nama, kategori, harga_beli, harga_jual, stok FROM produk";
 $result = $conn->query($sql);
 ?>
@@ -42,6 +44,7 @@ $result = $conn->query($sql);
             <tbody>
                 <?php
                 if ($result->num_rows > 0) {
+                    // Output data dari setiap baris
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
@@ -50,9 +53,9 @@ $result = $conn->query($sql);
                         echo "<td>" . $row["harga_beli"] . "</td>";
                         echo "<td>" . $row["harga_jual"] . "</td>";
                         echo "<td>" . $row["stok"] . "</td>";
-                        echo "<td>";
-                        echo "<a href='edit.php?id=" . $row["id"] . "'>Edit</a> | ";
-                        echo "<a href='hapus.php?id=" . $row["id"] . "' onclick='return confirm(\"Apakah Anda yakin ingin menghapus produk ini?\")'>Hapus</a>";
+                        echo "<td class='action-buttons'>";
+                        echo "<button class='insert-btn'><a href='edit.php?id=" . $row["id"] . "'>Edit</a></button>";
+                        echo "<button class='insert-btn'><a href='hapus.php?id=" . $row["id"] . "' onclick='return confirm(\"Apakah Anda yakin ingin menghapus produk ini?\")'>Hapus</a></button>";
                         echo "</td>";
                         echo "</tr>";
                     }
