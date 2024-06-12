@@ -1,23 +1,18 @@
 <?php
-include 'config.php';
+session_start();
 
-// Membuat koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
 }
 
-// Mendapatkan ID produk dari URL
-$id = $_GET['id'];
+include 'config.php';
 
-// Menghapus data produk berdasarkan ID
+$id = $_GET['id'];
 $sql = "DELETE FROM produk WHERE id=$id";
 
 if ($conn->query($sql) === TRUE) {
     echo "Produk berhasil dihapus";
-    // Redirect ke halaman produk.php setelah pesan berhasil dihapus
     header("Location: produk.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

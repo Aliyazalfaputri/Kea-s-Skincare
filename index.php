@@ -9,30 +9,23 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// Query untuk mendapatkan jumlah tipe barang
-$sql_types = "SELECT COUNT(DISTINCT nama) AS jumlah_tipe FROM produk";
+// Query untuk mendapatkan jumlah tipe barang (jumlah produk unik)
+$sql_types = "SELECT COUNT(DISTINCT id) AS jumlah_tipe FROM produk";
 $result_types = $conn->query($sql_types);
 $row_types = $result_types->fetch_assoc();
 $jumlah_tipe = $row_types['jumlah_tipe'];
 
-// Query untuk mendapatkan total stok barang
+// Query untuk mendapatkan total stok barang dari semua produk
 $sql_stock = "SELECT SUM(stok) AS total_stok FROM produk";
 $result_stock = $conn->query($sql_stock);
 $row_stock = $result_stock->fetch_assoc();
 $total_stok = $row_stock['total_stok'];
-
-// Query untuk mendapatkan total barang terjual (asumsi ada tabel penjualan)
-// $sql_sold = "SELECT SUM(quantity) AS total_terjual FROM sales";
-// $result_sold = $conn->query($sql_sold);
-// $row_sold = $result_sold->fetch_assoc();
-// $total_terjual = $row_sold['total_terjual'];
 
 $conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

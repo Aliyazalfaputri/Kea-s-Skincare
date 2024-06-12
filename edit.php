@@ -1,18 +1,14 @@
 <?php
-include 'config.php';
+session_start();
 
-// Membuat koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
 }
 
-// Mendapatkan ID produk dari URL
-$id = $_GET['id'];
+include 'config.php';
 
-// Mendapatkan data produk berdasarkan ID
+$id = $_GET['id'];
 $sql = "SELECT * FROM produk WHERE id=$id";
 $result = $conn->query($sql);
 $product = $result->fetch_assoc();
@@ -24,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $harga_jual = $_POST['harga_jual'];
     $stok = $_POST['stok'];
 
-    // Update data produk
     $sql = "UPDATE produk SET nama='$nama', kategori='$kategori', harga_beli='$harga_beli', harga_jual='$harga_jual', stok='$stok' WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {

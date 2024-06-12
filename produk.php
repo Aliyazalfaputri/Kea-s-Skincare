@@ -1,15 +1,13 @@
 <?php
-include 'config.php';
+session_start();
 
-// Membuat koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
 }
 
-// Query untuk mendapatkan data produk
+include 'config.php';
+
 $sql = "SELECT id, nama, kategori, harga_beli, harga_jual, stok FROM produk";
 $result = $conn->query($sql);
 ?>
@@ -44,7 +42,6 @@ $result = $conn->query($sql);
             <tbody>
                 <?php
                 if ($result->num_rows > 0) {
-                    // Output data dari setiap baris
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
@@ -70,4 +67,3 @@ $result = $conn->query($sql);
     <?php include 'template/footer.php'; ?>
 </body>
 </html>
-
