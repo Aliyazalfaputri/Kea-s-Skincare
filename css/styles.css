@@ -8,8 +8,7 @@
 body {
     font-family: montserrat, sans-serif;
     line-height: 1.6;
-    background: url('../file/bg.jpeg') no-repeat center center fixed;
-    background-size: cover;
+    background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -27,17 +26,12 @@ main {
 }
 
 .container h2{
+    color: #6420AA;
     margin-top: 80px;
-    background-image: linear-gradient(to right, #6420AA, rgb(255, 0, 0), indigo, violet);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
 }
 
 header {
-    background-color: #f4f4f4c5;
-    backdrop-filter: blur(5px);
+    background-color:#ffc8e4;
     position: fixed;
     padding: 10px 0;
     height: 80px;
@@ -47,11 +41,7 @@ header {
 
 .brand {
     float: left;
-    background-image: linear-gradient(to left, #ff2994, indigo,  #6420AA);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color: #ff2994;
     font-family: Gilroy;
     font-size: 25px;
 }
@@ -67,11 +57,7 @@ nav ul li {
 }
 
 nav ul li a {
-    background-image: linear-gradient(to right, #6420AA, indigo, #ff2994);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color:#ff2994;
     text-decoration: none;
 }
 
@@ -84,7 +70,7 @@ nav ul li a {
 }
 
 .info-content {
-    background-image: linear-gradient(to right, #FFFFFF 0%, #F7F7F7 50%, #E5E5E5 100%);
+    background-color: #f4f4f4;
     /* padding: 20px; */
     border-radius: 10px;
 }
@@ -110,11 +96,7 @@ nav ul li a {
 .info-box p {
     font-size: 40px;
     font-weight: bold;
-    background-image: linear-gradient(to left, #6420AA, indigo, rgb(255, 0, 0), violet);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+    color: #6420AA;
     background-color: #ffc8e4;
     border-radius: 10px;
     padding: 25px;
@@ -159,7 +141,7 @@ td {
 
 footer {
     font-size: 13px;
-    color: #f4f4f4;
+    color: #FF69B4;
     text-align: center;
     padding: 10px 0;
     margin-top: auto;
