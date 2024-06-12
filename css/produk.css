@@ -26,7 +26,7 @@ main {
 }
 
 .container h2 {
-    color: pink;
+    color: #6420AA;
 }
 
 
@@ -42,7 +42,7 @@ table th, table td {
 }
 
 .insert-btn {
-    color: #fff;
+    background-image: linear-gradient(130deg, #6420AA,#419fa7);
     border: none;
     padding: 10px 20px;
     margin-top: 20px;
@@ -51,15 +51,31 @@ table th, table td {
     text-decoration: none;
 }
 
-.insert-btn a {
-    background-color: pink; 
-    color: #fff;
+.insert-btn a{
+    color: #f4f4f4;
     text-decoration: none;
-    display: block;
-    padding: 10px 20px; 
-    border-radius: 5px;
 }
 
-.insert-btn a:hover {
-    background-color: #d1548f; 
+.insert-btn:hover {
+    background-image: linear-gradient(130deg, #e2e2e2,#d8a4d7);
+}
+
+.mod-btn{
+    background-image: linear-gradient(130deg, #d1548f , #af3af3);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin:0 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.mod-btn a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.mod-btn:hover {
+    background-image: linear-gradient(130deg, #e2e2e2,#d8a4d7);
 }

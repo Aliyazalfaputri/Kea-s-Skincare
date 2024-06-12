@@ -84,7 +84,7 @@ nav ul li a {
 }
 
 .info-content {
-    background-color: linear-gradient(to right, #FFFFFF 0%, #F7F7F7 50%, #E5E5E5 100%);
+    background-image: linear-gradient(to right, #FFFFFF 0%, #F7F7F7 50%, #E5E5E5 100%);
     /* padding: 20px; */
     border-radius: 10px;
 }

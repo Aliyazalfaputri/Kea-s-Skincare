@@ -54,8 +54,8 @@ $result = $conn->query($sql);
                         echo "<td>" . $row["harga_jual"] . "</td>";
                         echo "<td>" . $row["stok"] . "</td>";
                         echo "<td class='action-buttons'>";
-                        echo "<button class='insert-btn'><a href='edit.php?id=" . $row["id"] . "'>Edit</a></button>";
-                        echo "<button class='insert-btn'><a href='hapus.php?id=" . $row["id"] . "' onclick='return confirm(\"Apakah Anda yakin ingin menghapus produk ini?\")'>Hapus</a></button>";
+                        echo "<button class='mod-btn'><a href='edit.php?id=" . $row["id"] . "'>Edit</a></button>";
+                        echo "<button class='mod-btn'><a href='hapus.php?id=" . $row["id"] . "' onclick='return confirm(\"Apakah Anda yakin ingin menghapus produk ini?\")'>Hapus</a></button>";
                         echo "</td>";
                         echo "</tr>";
                     }
