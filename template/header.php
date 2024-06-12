@@ -21,7 +21,7 @@ $conn->close();
                 <ul>
                     <li><a href="../sistem-penjualan-skincare/index.php">Dashboard</a></li>
                     <li><a href="../sistem-penjualan-skincare/produk.php">Produk</a></li>
-                    <li><a href="#">Penjualan</a></li>
+                    <li><a href="../sistem-penjualan-skincare/penjualan.php">Penjualan</a></li>
                     <li><a href="#">Laporan</a></li>
                 </ul>
             </nav>
