@@ -42,7 +42,7 @@ table th, table td {
 }
 
 .insert-btn {
-    background-color: #6420AA;
+    background-image: linear-gradient(130deg, #6420AA,#419fa7);
     color: #fff;
     border: none;
     padding: 10px 20px;
