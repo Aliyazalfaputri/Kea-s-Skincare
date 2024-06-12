@@ -26,39 +26,44 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kea's Skincare - Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
     <?php include 'template/header.php'; ?>
-
-    <main class="container">
-        <h2>Dashboard</h2>
-        <div class="dashboard-info">
-            <div class="info-box">
-                <h3><a href="produk.php">Jumlah Tipe Barang</a></h3>
-                <div class="info-content">
-                    <p><?php echo $jumlah_tipe; ?></p>
+    
+    <div class="container">
+        <?php include 'template/sidebar.php'; ?>
+        <main class="content">
+            <h2>Dashboard</h2>
+            <div class="dashboard-info">
+                <div class="info-box">
+                    <h3><a href="produk.php">Jumlah Tipe Barang</a></h3>
+                    <div class="info-content">
+                        <p><?php echo $jumlah_tipe; ?></p>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <h3><a href="produk.php">Stok Barang</a></h3>
+                    <div class="info-content">
+                        <p><?php echo $total_stok; ?></p>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <h3>Barang Terjual</h3>
+                    <div class="info-content">
+                        <!-- <p><?php echo $total_terjual; ?></p> -->
+                    </div>
                 </div>
             </div>
-            <div class="info-box">
-                <h3><a href="produk.php">Stok Barang</a></h3>
-                <div class="info-content">
-                    <p><?php echo $total_stok; ?></p>
-                </div>
-            </div>
-            <div class="info-box">
-                <h3>Barang Terjual</h3>
-                <div class="info-content">
-                    <!-- <p><?php echo $total_terjual; ?></p> -->
-                </div>
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <?php include 'template/footer.php'; ?>
 </body>
