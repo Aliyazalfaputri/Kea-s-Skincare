@@ -1,8 +1,3 @@
-<?php
-include 'config.php';
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,26 +9,18 @@ $conn->close();
 </head>
 
 <body>
-<header>
+    <header>
         <div class="container-header">
             <h1 class="brand">Kea's Skincare</h1>
-            <nav>
-                <!-- <ul>
-                    <li><a href="index.php">Dashboard</a></li>
-                    <li><a href="produk.php">Produk</a></li>
-                    <li><a href="penjualan.php">Penjualan</a></li>
-                    <li><a href="laporan.php">Laporan</a></li>
-                </ul> -->
-            </nav>
-        </div>
-        <div class="profile">
+            <div class="profile">
                 <i class="fas fa-user-circle"></i>
                 <div class="profile-text">
                     <strong>Admin</strong>
                     <span class="status">available</span>
                 </div>
             </div>
+        </div>
     </header>
-    </body>
+</body>
 
 </html>

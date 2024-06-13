@@ -16,6 +16,8 @@ body {
 
 main {
     flex: 1;
+    padding: 0; /* Pastikan tidak ada padding */
+    margin: 0; /* Pastikan tidak ada margin */
 }
 
 .container {
@@ -27,8 +29,8 @@ main {
 
 .container h2 {
     color: #6420AA;
+    margin-top: 0; /* Pastikan tidak ada margin atas */
 }
-
 
 table {
     width: 100%;
@@ -51,7 +53,7 @@ table th, table td {
     text-decoration: none;
 }
 
-.insert-btn a{
+.insert-btn a {
     color: #f4f4f4;
     text-decoration: none;
 }
@@ -60,18 +62,18 @@ table th, table td {
     background-image: linear-gradient(130deg, #e2e2e2,#d8a4d7);
 }
 
-.mod-btn{
+.mod-btn {
     background-image: linear-gradient(130deg, #d1548f , #af3af3);
     color: #fff;
     border: none;
     padding: 10px;
-    margin:0 5px;
+    margin: 0 5px;
     border-radius: 5px;
     font-size: 16px;
     text-decoration: none;
 }
 
-.mod-btn a{
+.mod-btn a {
     color: #fff;
     text-decoration: none;
 }

@@ -54,35 +54,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <link rel="stylesheet" href="css/tambah.css">
 
-<main class="container">
+<div class="container">
+    <?php include 'template/sidebar.php'; ?>
+    <main class="content">
+        <h2 style="text-align: center; margin-bottom: 20px; color: #ff2994;">Update Produk Skincare</h2>
 
-<h2 style="text-align: center; margin-bottom: 20px; color: #ff2994;">Update Produk Skincare</h2>
-
-<form class="add-product-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>">
-    <div class="form-group">
-        <label for="nama">Nama Skincare:</label>
-        <input type="text" name="nama" id="nama" value="<?php echo $nama; ?>" required>
-    </div>
-    <div class="form-group">
-        <label for="kategori">Kategori:</label>
-        <input type="text" name="kategori" id="kategori" value="<?php echo $kategori; ?>" required>
-    </div>
-    <div class="form-group">
-        <label for="harga_beli">Harga Beli:</label>
-        <input type="text" name="harga_beli" id="harga_beli" value="<?php echo $harga_beli; ?>" required>
-    </div>
-    <div class="form-group">
-        <label for="harga_jual">Harga Jual:</label>
-        <input type="text" name="harga_jual" id="harga_jual" value="<?php echo $harga_jual; ?>" required>
-    </div>
-    <div class="form-group">
-        <label for="stok">Stok:</label>
-        <input type="text" name="stok" id="stok" value="<?php echo $stok; ?>" required>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Update">
-    </div>
-</form>
-</main>
+        <form class="add-product-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>">
+            <div class="form-group">
+                <label for="nama">Nama Skincare:</label>
+                <input type="text" name="nama" id="nama" value="<?php echo $nama; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="kategori">Kategori:</label>
+                <input type="text" name="kategori" id="kategori" value="<?php echo $kategori; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="harga_beli">Harga Beli:</label>
+                <input type="text" name="harga_beli" id="harga_beli" value="<?php echo $harga_beli; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="harga_jual">Harga Jual:</label>
+                <input type="text" name="harga_jual" id="harga_jual" value="<?php echo $harga_jual; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="stok">Stok:</label>
+                <input type="text" name="stok" id="stok" value="<?php echo $stok; ?>" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update">
+            </div>
+        </form>
+    </main>
+</div>
 
 <?php include 'template/footer.php'; ?>

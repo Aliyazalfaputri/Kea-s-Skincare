@@ -47,43 +47,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php include 'template/header.php'; ?>
 
-    <main class="container">
-        <h2>Catat Penjualan</h2>
-        <form method="post" action="">
-            <div id="items">
-                <div class="item">
-                    <label for="id_produk">Produk:</label>
-                    <select name="id_produk[]" class="id_produk" onchange="updateHarga(this)" required>
-                        <option value="" data-harga="0">Pilih Produk</option>
-                        <?php
-                        if ($result_produk->num_rows > 0) {
-                            while($row = $result_produk->fetch_assoc()) {
-                                echo "<option value='" . $row['id'] . "' data-harga='" . $row['harga_jual'] . "'>" . $row['nama'] . "</option>";
+    <div class="container">
+        <?php include 'template/sidebar.php'; ?>
+        <main class="content">
+            <h2>Catat Penjualan</h2>
+            <form method="post" action="">
+                <div id="items">
+                    <div class="item">
+                        <label for="id_produk">Produk:</label>
+                        <select name="id_produk[]" class="id_produk" onchange="updateHarga(this)" required>
+                            <option value="" data-harga="0">Pilih Produk</option>
+                            <?php
+                            if ($result_produk->num_rows > 0) {
+                                while($row = $result_produk->fetch_assoc()) {
+                                    echo "<option value='" . $row['id'] . "' data-harga='" . $row['harga_jual'] . "'>" . $row['nama'] . "</option>";
+                                }
+                            } else {
+                                echo "<option value=''>Tidak ada produk</option>";
                             }
-                        } else {
-                            echo "<option value=''>Tidak ada produk</option>";
-                        }
-                        ?>
-                    </select><br>
+                            ?>
+                        </select><br>
 
-                    <label for="jumlah">Jumlah:</label>
-                    <input type="number" name="jumlah[]" class="jumlah" oninput="updateTotal(this)" required><br>
+                        <label for="jumlah">Jumlah:</label>
+                        <input type="number" name="jumlah[]" class="jumlah" oninput="updateTotal(this)" required><br>
 
-                    <label for="harga">Harga:</label>
-                    <input type="text" name="harga[]" class="harga" readonly required><br>
+                        <label for="harga">Harga:</label>
+                        <input type="text" name="harga[]" class="harga" readonly required><br>
 
-                    <label for="total_harga">Total Harga:</label>
-                    <input type="text" name="total_harga[]" class="total_harga" readonly required><br>
+                        <label for="total_harga">Total Harga:</label>
+                        <input type="text" name="total_harga[]" class="total_harga" readonly required><br>
+                    </div>
                 </div>
-            </div>
-            <button type="button" onclick="addItem()">Tambah Barang</button><br>
+                <button type="button" onclick="addItem()">Tambah Barang</button><br>
 
-            <label for="tanggal">Tanggal:</label>
-            <input type="date" name="tanggal" id="tanggal" required><br>
+                <label for="tanggal">Tanggal:</label>
+                <input type="date" name="tanggal" id="tanggal" required><br>
 
-            <input type="submit" value="Catat Penjualan">
-        </form>
-    </main>
+                <input type="submit" value="Catat Penjualan">
+            </form>
+        </main>
+    </div>
 
     <?php include 'template/footer.php'; ?>
 
