@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2024 at 07:07 PM
+-- Generation Time: Jun 13, 2024 at 01:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_keas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penjualan`
+--
+
+CREATE TABLE `penjualan` (
+  `id` int(11) NOT NULL,
+  `tanggal` date DEFAULT NULL,
+  `id_produk` int(11) DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
+  `harga` decimal(10,2) DEFAULT NULL,
+  `total_harga` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `penjualan`
+--
+
+INSERT INTO `penjualan` (`id`, `tanggal`, `id_produk`, `jumlah`, `harga`, `total_harga`) VALUES
+(1, '2024-06-13', 1, 3, 75.00, 225.00);
 
 -- --------------------------------------------------------
 
@@ -78,6 +100,12 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 --
 
 --
+-- Indexes for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
@@ -93,6 +121,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `produk`
