@@ -4,89 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Laporan Penjualan Juni 2024</title>
-    <style>body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
-    background: #fff;
-    margin-top: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-}
-
-label {
-    margin-bottom: 5px;
-}
-
-select, input[type="date"], .btn {
-    padding: 5px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-.total {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f4f4f4;
-    margin-top: 20px;
-}
-</style>
+    <link rel="stylesheet" href="css/laporan.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <div class="container">
+<?php include 'template/header.php'; ?>
+
+<div class="container">
+    <?php include 'template/sidebar.php'; ?>
+    <div class="content">
         <h1>Laporan Penjualan</h1>
         <form method="GET" action="">
             <div class="form-group">
