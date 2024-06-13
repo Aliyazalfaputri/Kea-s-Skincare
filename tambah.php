@@ -30,37 +30,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <link rel="stylesheet" href="css/tambah.css">
 
-<main class="container">
+<div class="container">
+    <?php include 'template/sidebar.php'; ?>
+    <main class="content">
+        <h2 style="text-align: center; margin-bottom: 20px; color: #ff2994;">Tambah Produk Skincare</h2>
 
-<h2 style="text-align: center; margin-bottom: 20px; color : #ff2994;">Tambah Produk Skincare</h2>
-
-  <form class="add-product-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-    <div class="form-group">
-      <label for="nama">Nama Skincare:</label>
-      <input type="text" name="nama" id="nama" required>
-    </div>
-    <div class="form-group">
-      <label for="kategori">Kategori:</label>
-      <input type="text" name="kategori" id="kategori" required>
-    </div>
-    <div class="form-group">
-      <label for="harga_beli">Harga Beli:</label>
-      <input type="text" name="harga_beli" id="harga_beli" required>
-    </div>
-    <div class="form-group">
-      <label for="harga_jual">Harga Jual:</label>
-      <input type="text" name="harga_jual" id="harga_jual" required>
-    </div>
-    <div class="form-group">
-      <label for="stok">Stok:</label>
-      <input type="text" name="stok" id="stok" required>
-    </div>
-    <div class="form-group">
-      <input type="submit" value="Submit">
-    </div>
-  </form>
-</main>
+        <form class="add-product-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <div class="form-group">
+                <label for="nama">Nama Skincare:</label>
+                <input type="text" name="nama" id="nama" required>
+            </div>
+            <div class="form-group">
+                <label for="kategori">Kategori:</label>
+                <input type="text" name="kategori" id="kategori" required>
+            </div>
+            <div class="form-group">
+                <label for="harga_beli">Harga Beli:</label>
+                <input type="text" name="harga_beli" id="harga_beli" required>
+            </div>
+            <div class="form-group">
+                <label for="harga_jual">Harga Jual:</label>
+                <input type="text" name="harga_jual" id="harga_jual" required>
+            </div>
+            <div class="form-group">
+                <label for="stok">Stok:</label>
+                <input type="text" name="stok" id="stok" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </main>
+</div>
 
 <?php include 'template/footer.php'; ?>
-
-
