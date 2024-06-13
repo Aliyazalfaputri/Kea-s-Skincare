@@ -30,7 +30,7 @@ $result = $conn->query($sql);
         <?php include 'template/sidebar.php'; ?>
         <main class="content">
             <h2>Data Produk</h2>
-            <button class="insert-btn"><a href="tambah.php">Tambah Data</a></button>
+            <button class="tambah-btn"><a href="tambah.php">Tambah Data</a></button>
             <table>
                 <thead>
                     <tr>
