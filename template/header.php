@@ -12,11 +12,10 @@
     <header>
         <div class="container-header">
             <h1 class="brand">Kea's Skincare</h1>
-            <div class="profile">
+            <div class="profile"><a href="create_admin.php">
                 <i class="fas fa-user-circle"></i>
                 <div class="profile-text">
                     <strong>Admin</strong>
-                    <span class="status">available</span>
                 </div>
             </div>
         </div>

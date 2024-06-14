@@ -226,9 +226,13 @@ header {
 }
 
 .profile {
-    display: flex;
-    align-items: center;
-    margin-right: 20px; /* Add some margin to the right if needed */
+    display: inline-block;
+    /* vertical-align: middle; */
+}
+
+.profile-text {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .profile i {
@@ -237,18 +241,7 @@ header {
     margin-right: 10px;
 }
 
-.profile-text {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
 .profile-text strong {
     font-size: 14px;
     color: #ff2994;
-}
-
-.profile-text .status {
-    font-size: 12px;
-    color: rgba(255, 41, 148, 0.7);
 }
