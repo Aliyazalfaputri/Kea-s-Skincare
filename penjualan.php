@@ -72,10 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="number" name="jumlah[]" class="jumlah" oninput="updateTotal(this)" required><br>
 
                         <label for="harga">Harga:</label>
-                        <input type="text" name="harga[]" class="harga" readonly required><br>
+                        <input type="number" name="harga[]" class="harga" readonly required><br>
 
                         <label for="total_harga">Total Harga:</label>
-                        <input type="text" name="total_harga[]" class="total_harga" readonly required><br>
+                        <input type="number" name="total_harga[]" class="total_harga" readonly required><br>
                     </div>
                 </div>
                 <button type="button" onclick="addItem()">Tambah Barang</button><br>

@@ -14,7 +14,7 @@
 <div class="container">
     <?php include 'template/sidebar.php'; ?>
     <div class="content">
-        <h1>Laporan Penjualan</h1>
+        <h2>Laporan Penjualan</h2>
         <form method="GET" action="">
             <div class="form-group">
                 <label for="bulan">Pilih Bulan:</label>
@@ -47,7 +47,6 @@
             <div class="form-group">
                 <button type="submit" name="search" value="month" class="btn">Cari</button>
                 <button type="button" onclick="location.reload()" class="btn">Refresh</button>
-                <button type="button" onclick="exportToExcel()" class="btn">Excel</button>
             </div>
         </form>
 
@@ -59,7 +58,6 @@
             <div class="form-group">
                 <button type="submit" name="search" value="day" class="btn">Cari</button>
                 <button type="button" onclick="location.reload()" class="btn">Refresh</button>
-                <button type="button" onclick="exportToExcel()" class="btn">Excel</button>
             </div>
         </form>
 
@@ -73,17 +71,17 @@
                     <th>Jumlah</th>
                     <th>Modal</th>
                     <th>Total</th>
-                    <th>Kasir</th>
-                    <th>Tanggal Input</th>
+                    <th>Tanggal</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 include 'config.php';
 
-                $query = "SELECT l.id, l.quantity, l.cashier, l.input_date, p.id as produk_id, p.nama, p.kategori, p.harga_beli, p.harga_jual
-                          FROM laporan l
-                          JOIN produk p ON l.produk_id = p.id
+                $query = "SELECT p.id as produk_id, p.nama, p.kategori, p.harga_beli, p.harga_jual, p.stok,
+                                  j.id as penjualan_id, j.tanggal, j.jumlah, j.harga, j.total_harga
+                          FROM penjualan j
+                          JOIN produk p ON j.id_produk = p.id
                           WHERE 1=1";
 
                 if (isset($_GET['search'])) {
@@ -91,12 +89,12 @@
                         $bulan = $_GET['bulan'];
                         $tahun = $_GET['tahun'];
                         if ($bulan && $tahun) {
-                            $query .= " AND MONTH(l.input_date) = $bulan AND YEAR(l.input_date) = $tahun";
+                            $query .= " AND MONTH(j.tanggal) = $bulan AND YEAR(j.tanggal) = $tahun";
                         }
                     } elseif ($_GET['search'] == 'day') {
                         $tanggal = $_GET['tanggal'];
                         if ($tanggal) {
-                            $query .= " AND l.input_date = '$tanggal'";
+                            $query .= " AND j.tanggal = '$tanggal'";
                         }
                     }
                 }
@@ -105,17 +103,15 @@
                 if (mysqli_num_rows($result) > 0) {
                     $no = 1;
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $total = $row['harga_jual'] * $row['quantity'];
                         echo "<tr>";
                         echo "<td>{$no}</td>";
                         echo "<td>{$row['produk_id']}</td>";
                         echo "<td>{$row['nama']}</td>";
                         echo "<td>{$row['kategori']}</td>";
-                        echo "<td>{$row['quantity']}</td>";
+                        echo "<td>{$row['jumlah']}</td>";
                         echo "<td>{$row['harga_beli']}</td>";
-                        echo "<td>{$total}</td>";
-                        echo "<td>{$row['cashier']}</td>";
-                        echo "<td>{$row['input_date']}</td>";
+                        echo "<td>{$row['total_harga']}</td>";
+                        echo "<td>{$row['tanggal']}</td>";
                         echo "</tr>";
                         $no++;
                     }
@@ -129,23 +125,13 @@
         <div class="total">
             <p>Total Terjual: 
                 <?php
-                $total_query = "SELECT SUM(l.quantity) as total_qty, SUM(p.harga_beli * l.quantity) as total_cost, SUM(p.harga_jual * l.quantity) as total_sales
-                                FROM laporan l
-                                JOIN produk p ON l.produk_id = p.id";
+                $total_query = "SELECT SUM(j.jumlah) as total_qty, SUM(p.harga_beli * j.jumlah) as total_cost, SUM(j.total_harga) as total_sales
+                                FROM penjualan j
+                                JOIN produk p ON j.id_produk = p.id";
                 $total_result = mysqli_query($conn, $total_query);
                 $totals = mysqli_fetch_assoc($total_result);
                 echo $totals['total_qty'];
                 ?>
             </p>
-            <p>Rp. <?php echo number_format($totals['total_cost'], 2, ',', '.'); ?>,-</p>
-            <p>Keuntungan: Rp. <?php echo number_format($totals['total_sales'], 2, ',', '.'); ?>,-</p>
-        </div>
-    </div>
-
-    <script>
-        function exportToExcel() {
-            // Implement export to excel functionality
-        }
-    </script>
-</body>
-</html>
+            <p>Pemasukan: Rp. <?php echo number_format($totals['total_cost'], 0, ',', '.'); ?>,-</p>
+            <p>Keuntungan: Rp. <?php echo number_format($totals['total_sales'] - $totals['total_cost'], 0, ',', '.'); ?>,-</p>

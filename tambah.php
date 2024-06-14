@@ -46,11 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label for="harga_beli">Harga Beli:</label>
-                <input type="text" name="harga_beli" id="harga_beli" required>
+                <input type="number" name="harga_beli" id="harga_beli" required>
             </div>
             <div class="form-group">
                 <label for="harga_jual">Harga Jual:</label>
-                <input type="text" name="harga_jual" id="harga_jual" required>
+                <input type="number" name="harga_jual" id="harga_jual" required>
             </div>
             <div class="form-group">
                 <label for="stok">Stok:</label>

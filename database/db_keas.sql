@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2024 at 01:18 PM
+-- Generation Time: Jun 14, 2024 at 05:28 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,6 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `laporan`
+--
+
+CREATE TABLE `laporan` (
+  `id` int(11) NOT NULL,
+  `produk_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `cashier` varchar(255) NOT NULL,
+  `input_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `penjualan`
 --
 
@@ -32,8 +46,8 @@ CREATE TABLE `penjualan` (
   `tanggal` date DEFAULT NULL,
   `id_produk` int(11) DEFAULT NULL,
   `jumlah` int(11) DEFAULT NULL,
-  `harga` decimal(10,2) DEFAULT NULL,
-  `total_harga` decimal(10,2) DEFAULT NULL
+  `harga` decimal(10,0) DEFAULT NULL,
+  `total_harga` decimal(10,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -41,7 +55,8 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`id`, `tanggal`, `id_produk`, `jumlah`, `harga`, `total_harga`) VALUES
-(1, '2024-06-13', 1, 3, 75.00, 225.00);
+(1, '2024-06-14', 7, 2, 70, 140),
+(2, '2024-06-14', 9, 2, 50, 100);
 
 -- --------------------------------------------------------
 
@@ -53,8 +68,8 @@ CREATE TABLE `produk` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `kategori` varchar(255) NOT NULL,
-  `harga_beli` decimal(10,0) NOT NULL,
-  `harga_jual` decimal(10,0) NOT NULL,
+  `harga_beli` decimal(10,0) DEFAULT NULL,
+  `harga_jual` decimal(10,0) DEFAULT NULL,
   `stok` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -74,7 +89,8 @@ INSERT INTO `produk` (`id`, `nama`, `kategori`, `harga_beli`, `harga_jual`, `sto
 (9, 'Clay Mask', 'Mask', 35, 50, 130),
 (10, 'Exfoliating Scrub', 'Scrub', 28, 40, 140),
 (14, 'Nature Daily Hydramild Toner Essence', 'toner', 60, 90, 10),
-(17, 'Emina Bright Stuff ', 'Sabun Muka', 20, 30, 10);
+(17, 'Emina Bright Stuff ', 'Sabun Muka', 20, 30, 10),
+(18, 'Citra Whitening', 'Body Lotion', 15000, 20000, 50);
 
 -- --------------------------------------------------------
 
@@ -100,10 +116,18 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 --
 
 --
+-- Indexes for table `laporan`
+--
+ALTER TABLE `laporan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `produk_id` (`produk_id`);
+
+--
 -- Indexes for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_produk` (`id_produk`);
 
 --
 -- Indexes for table `produk`
@@ -123,22 +147,44 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `laporan`
+--
+ALTER TABLE `laporan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `laporan`
+--
+ALTER TABLE `laporan`
+  ADD CONSTRAINT `laporan_ibfk_1` FOREIGN KEY (`produk_id`) REFERENCES `produk` (`id`);
+
+--
+-- Constraints for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  ADD CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
