@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2024 at 05:28 AM
+-- Generation Time: Jun 14, 2024 at 01:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -55,8 +55,12 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`id`, `tanggal`, `id_produk`, `jumlah`, `harga`, `total_harga`) VALUES
-(1, '2024-06-14', 7, 2, 70, 140),
-(2, '2024-06-14', 9, 2, 50, 100);
+(6, '2024-06-13', 4, 2, 60000, 120000),
+(7, '2024-06-13', 18, 1, 20000, 20000),
+(8, '2024-06-14', 5, 3, 35000, 105000),
+(9, '2024-06-14', 10, 1, 40000, 40000),
+(10, '2024-06-14', 6, 4, 85000, 340000),
+(11, '2024-06-14', 14, 3, 90000, 270000);
 
 -- --------------------------------------------------------
 
@@ -78,18 +82,18 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `nama`, `kategori`, `harga_beli`, `harga_jual`, `stok`) VALUES
-(1, 'Serum Vitamin C', 'Serum', 50, 75, 100),
-(2, 'Moisturizer', 'Cream', 30, 45, 150),
-(3, 'Toner Witch Hazel', 'Toner', 20, 30, 200),
-(4, 'Sunscreen SPF 50', 'Sunblock', 40, 60, 80),
-(5, 'Face Wash', 'Cleanser', 25, 35, 120),
-(6, 'Night Cream', 'Cream', 55, 85, 90),
-(7, 'Eye Cream', 'Cream', 45, 70, 110),
-(8, 'Lip Balm', 'Lip Care', 10, 15, 250),
-(9, 'Clay Mask', 'Mask', 35, 50, 130),
-(10, 'Exfoliating Scrub', 'Scrub', 28, 40, 140),
-(14, 'Nature Daily Hydramild Toner Essence', 'toner', 60, 90, 10),
-(17, 'Emina Bright Stuff ', 'Sabun Muka', 20, 30, 10),
+(1, 'Serum Vitamin C', 'Serum', 50000, 75000, 100),
+(2, 'Moisturizer', 'Cream', 30000, 45000, 150),
+(3, 'Toner Witch Hazel', 'Toner', 20000, 30000, 200),
+(4, 'Sunscreen SPF 50', 'Sunblock', 40000, 60000, 80),
+(5, 'Face Wash', 'Cleanser', 25000, 35000, 120),
+(6, 'Night Cream', 'Cream', 55000, 85000, 90),
+(7, 'Eye Cream', 'Cream', 45000, 70000, 110),
+(8, 'Lip Balm', 'Lip Care', 10000, 15000, 250),
+(9, 'Clay Mask', 'Mask', 35000, 50000, 130),
+(10, 'Exfoliating Scrub', 'Scrub', 28000, 40000, 140),
+(14, 'Nature Daily Hydramild Toner Essence', 'toner', 60000, 90000, 10),
+(17, 'Emina Bright Stuff ', 'Sabun Muka', 20000, 30000, 10),
 (18, 'Citra Whitening', 'Body Lotion', 15000, 20000, 50);
 
 -- --------------------------------------------------------
@@ -156,7 +160,7 @@ ALTER TABLE `laporan`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `produk`
@@ -168,7 +172,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
